@@ -5,6 +5,9 @@
       location = "group:Package.swift">
    </FileRef>
    <FileRef
+      location = "group:SampleFiles">
+   </FileRef>
+   <FileRef
       location = "group:Sources">
    </FileRef>
    <FileRef
