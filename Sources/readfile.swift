@@ -15,5 +15,6 @@ func readFromFile(location:String) -> String? {
 
 //parses text to an XML tree object
 func textToXML(text:String) -> XMLIndexer {
-    return SWXMLHash.parse(text)
+    //program wrapper allows for free scripting layout versus strict layout
+    return SWXMLHash.parse("<program>\(text)</program>")
 }
