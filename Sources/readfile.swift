@@ -1,23 +1,19 @@
 /*
- File that implements the readng of xenon files from CMD args
+ File that implements the functions to read xenon files from CMD args and parse from xml format
  */
 
 import Foundation
 
-func readFromFile(location:String) -> XMLIndexer? {
-    if let filepath = Bundle.main.path(forResource: location, ofType: "txt") {
-        do {
-            let contents = try String(contentsOfFile: filepath)
-            print(contents)
-            return SWXMLHash.parse(contents)
-        } catch {
-            //needs specific error
-            print("Error Invalid Xenon File")
-            return nil
-        }
-    } else {
-        //needs specific error
-       print("Xenon file \(location) does not exist.")
+//reads text utf-8 encoded from file
+func readFromFile(location:String) -> String? {
+    do {
+        return try String(contentsOfFile: location, encoding: String.Encoding.utf8)
+    } catch {
         return nil
     }
+}
+
+//parses text to an XML tree object
+func textToXML(text:String) -> XMLIndexer {
+    return SWXMLHash.parse(text)
 }
